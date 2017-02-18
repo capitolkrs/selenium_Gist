@@ -12,9 +12,11 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import net.serenitybdd.core.Serenity;
+import net.serenitybdd.core.pages.PageObject;
 
-public class Hook {
-	
+public class Hook extends PageObject{
+
 	private static final String IE_DRIVER_IDENTIFIER="internetexplorer";
 	private static final String FIREFOX_DRIVER_IDENTIFIER="firefox";
 	private static final String CHROME_DRIVER_IDENTIFIER="chrome";
@@ -31,6 +33,8 @@ public void storeScenario(Scenario scenario){
 public static Scenario getCurrentScenario(){
 	return scenario;
 }
+
+
 
 public static WebDriver getWebDriver(){
 	if(webDriver==null){
@@ -61,4 +65,7 @@ public static void clearWebDriver(){
 	}
 }
 
+public static String getSessionId(){
+	return Serenity.getCurrentSessionID();
+}
 }
